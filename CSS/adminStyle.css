@@ -1,7 +1,14 @@
 :root{
     --primaryColor: white;
     --secondaryColor: #e2457c;
+    --passwordButtonHoverColor: #e6aabf;
     --headerHeight: 120px;
+    --presidentsBtnsWidth: 215px;
+}
+
+/*Nascondo il bottone predefinito. Creare un bottone con un javascript che clicchi l'input*/
+input[type=file]{
+    display: none;
 }
 
 #title{
@@ -12,42 +19,202 @@
 }
 
 #mainContent{
-    position: absolute;
-
     display: flex;
     align-items: center;
     flex-direction: column;
 
-    width: 100vw;
-    height: 10vh;
+    gap: 20px;
 
-    top: var(--headerHeight);
+    width: 100vw;
+
+    padding: 20px;
+}
+
+#mainContent button{
+    color: var(--secondaryColor);
+    font-weight: 600;
+
+    background-color: transparent;
+    border-width: 2px;
+    border-color: var(--secondaryColor);
+
+    padding: 2px 8px;
+
+    cursor: pointer;
+}
+
+#mainContent button:hover{
+    background-color: var(--primaryColor);
+}
+
+#mainContent a{
+    color: inherit;
+    text-decoration-color: black;
+}
+
+#mainContent span{
+    color: var(--secondaryColor);
+}
+
+#passwordBtn{
+    background-color: transparent;
+    color: var(--secondaryColor);
+    border-style: hidden;
+
+    position: absolute;
+    top: 20px;
+
+    width: fit-content;
+    height: 70px;
+    margin-left: 5vw;
+
+    font-weight: bolder;
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+#saveBtn{
+    background-color: transparent;
+    color: var(--secondaryColor);
+    border-style: hidden;
+
+    position: absolute;
+    margin-left: auto;
+    top: 20px;
+    right: 0;
+
+    width: fit-content;
+    height: 70px;
+    margin-right: 5vw;
+
+    font-weight: bolder;
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+#saveBtn:hover{
+    color: var(--passwordButtonHoverColor);
+}
+
+#passwordBtn:hover{
+    color: var(--passwordButtonHoverColor);
 }
 
 .editableElementContainer{
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: start;
 
-    height: 100%;
+    width: 80%;
+}
+
+.sectionContainer{
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
     width: 100%;
 }
+
+.modificationContainer{
+    display: none;
+
+    margin-top: 10px;
+
+    height: fit-content;
+    width: 88%;
+}
+
+.modificationContainer > .editableContent {
+    margin-left: auto;
+
+    width: 90%;
+}
+
+.verticalLineContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+
+    transform: translateX(3px);
+}
+
+.linePoint{
+    width: 10px;
+    height: 10px;
+    background-color: var(--secondaryColor);
+
+    rotate: -45deg;
+}
+
+.lineBody{
+    width: 4px;
+    height: 100%;
+    background-color: var(--secondaryColor);
+}
+
 .editableElementContainer h2 {
+    color: var(--secondaryColor);
     width: 15vw;
     text-align: center;
+
+    position: relative;
+    left: 15%;
 }
 
 .descriptionContainer{
-    border-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--primaryColor);
+    color: black;
+
+    border-color: var(--secondaryColor);
     border-style: solid;
     
     width: 50%;
-    text-align: center;
+    height: 70px;
+
+    margin-left: auto;
+
+    font-size: 20px;
+}
+
+.addForm{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addForm > div {
+    width: 20%;
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+    margin-right: 20px;
+}
+
+.addForm > div > label{
+    margin-left: 5px;
+}
+
+.addForm > div > input{
+    width: 100%;
 }
 
 /*=== ARROW ICONS ===*/
 .arrow {
-    border: solid black;
+    border: solid var(--secondaryColor);
     border-width: 0 5px 5px 0;
     display: inline-block;
     padding: 7px;
@@ -63,3 +230,217 @@ transform: rotate(45deg);
 -webkit-transform: rotate(45deg);
 }
 /*=== ARROW ICONS END ===*/
+
+.showModifications {
+    display: flex !important; /* !important ha la priorità */
+}
+
+
+.editableContent p{
+    color: black;
+    font-size: 25px;
+}
+
+.editableContent{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/*=== GRID ===*/
+.grid{
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) minmax(0,1fr);
+    column-gap: 10%;
+    row-gap: 10px;
+}
+
+.grid > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    height: 70px;
+}
+
+.grid > div > p{
+    width: 60%;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.grid button {
+    height: 100%;
+}
+/*=== GRID END ===*/
+
+/*=== PRESIDENTS ===*/
+#presidentsGrid form{
+    height: 70%;
+}
+
+#presidentsGrid p{
+    margin: 0;
+}
+
+.addBtn{
+    height: 50px;
+    width: 150px;
+
+    color: var(--secondaryColor);
+    font-weight: 600;
+
+    background-color: transparent;
+    border-width: 2px;
+    border-color: var(--secondaryColor);
+
+    cursor: pointer;
+
+    margin: 0px auto 0 auto;
+}
+
+.addBtn:hover{
+    background-color: var(--primaryColor);
+}
+
+.role{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 60px;
+}
+
+.role p{
+    margin: 0;
+}
+
+.role button{
+    height: 70%;
+    width: var(--presidentsBtnsWidth);
+}
+
+.presDate{
+    font-size: 20px !important;
+    position: relative;
+
+    left: 2.5vw;
+}
+
+.directorEditInputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: fit-content;
+    height: 100%;
+}
+
+/*=== PRESIDENTS END ===*/
+
+/*=== BULLETIN ===*/
+#currentBulletinContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#currentBulletinContainer p{
+    overflow-wrap: anywhere;
+    width: 67%;
+}
+
+#currentBulletinContainer button{
+    height: 50px;
+    width: 50%;
+}
+
+#currentBulletinContainer input[type=number]{
+    width: 10%;
+}
+
+#currentBulletinContainer > div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    width: 300px;
+}
+
+#pdfGrid > div > form{
+    height: 100%;
+}
+
+#pdfGrid > div {
+    height: 60px;
+}
+#pdfGrid button {
+    height: 65% !important;
+    width: 48%;
+    margin-left: 1px;
+}
+/*=== BULLETIN END ===*/
+
+/*=== COLLABORATIONS ===*/
+#collaborationsContainer > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#collaborationsContainer button{
+    height: 50px;
+}
+
+#collaborationsContainer form > div > input{
+    width: 75%;
+}
+/*=== COLLABORATIONS END ===*/
+
+/*=== PAGES ===*/
+#editablePages button{
+    height: 40px;
+}
+
+#editablePages .editableElementContainer {
+    width: 100% !important;
+}
+
+#editablePages .sectionContainer > p{
+    position: relative;
+    left: 5%;
+    width: 100%;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+#editablePages .editableContent > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#editablePages .editableContent > div > p{
+    width: 80%;
+}
+
+.pageTextInput{
+    resize: none;
+}
+/*=== PAGES END ===*/
+
+/*=== IMAGES ===*/
+#editableHomeImg{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/*=== IMAGES END ===*/

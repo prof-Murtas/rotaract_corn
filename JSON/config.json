@@ -1,3 +1,9 @@
 {
-    "password": "$2y$10$OfTgaph9skGPwL5HB5q20OU\/36AXATW7aXyX8PclEG9MV7Puhxmy."
+    "currentBulletin": "PDF\/CV.pdf",
+    "homeImg" : "HomeImg\/trento.jpg",
+    "carouselImgs": [
+        "carousel\/carosello1.jpg",
+        "carousel\/carosello2.jpg",
+        "carousel\/carosello3.jpg"
+    ]
 }

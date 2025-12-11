@@ -25,6 +25,11 @@
     --lateralSelectionCurrentPosition: var(--lateralSelectionStartingPosition);
 }
 
+p{
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+}
+
 body{
     /*Posiziono l'header in cima e il footer in fondo*/
     display: flex;
@@ -93,6 +98,10 @@ body{
     /*Posizione*/
     position: absolute;
     left: 5%;
+}
+
+#header > .dropdownBox{
+    width: 100px;
 }
 
 #footer{
@@ -384,7 +393,7 @@ h4{
     width: inherit;
 }
 
-.dropdownContent > button{
+.dropdownContent > button, .dropdownContent input {
     cursor: pointer;
     font-size: 15px;
     height:70px;
@@ -419,7 +428,7 @@ h4{
 }
 
 /*Stile header quando lo schermo è stretto*/
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1000px){
     #menuHamburger{
         /*Mostro il menù*/
         display: flex;

@@ -34,17 +34,12 @@
     color: var(--secondaryColor);
 }
 
-.container2 {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
+
 .leftRow{
     text-align: right;
     width: 50%;
     
 }
-
 
 .presidentContent{
     display: flex;
@@ -84,3 +79,32 @@
     bottom: 10px;
 }
 
+.reportButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75vw;
+    height: 75px;
+    padding: 2px;
+    margin: 10px;
+    font-size: large;
+
+    border-color: var(--secondaryColor);
+    border-width: 1.5px;
+    border-radius: 5px;
+    border-style: solid;
+
+    background-color: var(--primaryColor);
+    box-shadow: 2px 2px 20px -2px rgba(230,75,125,0.3);
+
+    cursor: pointer;
+
+    text-decoration: none;
+    color: black;
+}
+
+.reportButtons:hover {
+    transform: translate(-2px,-2px);
+    box-shadow: 6px 6px 12px 2px rgba(230,75,125,0.3);
+}

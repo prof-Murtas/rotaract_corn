@@ -17,23 +17,16 @@
     $textFile = setLanguage();
     $texts = json_decode($_SESSION[$TXT_JSON][$textFile], true);
     $langImg = "../" . getLanguageImage($textFile);
-
-    $jsonContent = json_decode($_SESSION[$PRESIDENTS_JSON],true);
-    $exPresidents = $jsonContent[$EX_PRESIDENTS];
-    $lenght = count($exPresidents);
-
-    $directors = $jsonContent[$DIRECTORS];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $texts[$TXT_WHO_WE_ARE]; ?></title>
+    <title><?php echo $texts[$TXT_EVENTS]; ?></title>
     <link rel="stylesheet" href="../CSS/commonStyle.css">
-    <link rel="stylesheet" href="../CSS/whoWeAreStyle.css">
 </head>
-<body>
+<body onload="setLang('', true)">
     <div id="obscurer"></div>
     
     <div id="lateralSelection">
@@ -83,69 +76,6 @@
     </div>
 
     <div id="content">
-        <h1 class="mainTitle"><?php echo $texts[$TXT_WHO_WE_ARE]; ?></h1>
-        <div class="contDiv">
-            <h2 class="subtitle"><?php echo $texts[$TXT_ACTUAL]; ?></h2>
-            <div class="container">
-                <div class="leftRow">
-                    <p><span class="role"><?php echo $texts[$TXT_PRES]; ?></span><span><?php echo $directors["pres"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_VPRES]; ?></span><span><?php echo $directors["vpres"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_SEGR]; ?></span><span><?php echo $directors["segr"];  ?></span></p>
-                </div>
-                    
-                <div>
-                    <p><span class="role"><?php echo $texts[$TXT_TES]; ?></span><span><?php echo $directors["tes"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_PREF]; ?></span><span ><?php echo $directors["pref"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_EXPRES]; ?></span><span><?php echo $directors["expres"];  ?></span></p>
-                </div>
-            </div>
-        </div>
-        
-        <br>
-
-        <div class="contDiv">
-            <h2 class="subtitle"><?php echo $texts[$TXT_EXPRESS]; ?></h2>
-            <div>
-            <?php
-                for($i=$lenght-1; $i>=0;){
-                    ?>
-                    <div class="container2">
-                    <?php
-                    $j=0;
-                    while( $j<4 && $i>=0 ){
-                        ?>
-                        <div class="presidentContent">
-                                <h3><?php
-                                echo $exPresidents[$i][$PRESIDENT_NAME];
-                            
-                                ?></h3>
-                                <p class="date"><?php
-                                echo $exPresidents[$i][$PRESIDENT_DATE];
-                                ?></p>
-                            
-                        </div>
-                        <?php
-                        $i--;
-                        $j++;
-                    };
-
-                    ?>
-                </div>
-                <br>
-                <?php
-
-                
-            }
-
-
-
-            ?>
-
-            </div>
-            
-            
-            
-        </div>   
     </div>
 
     <div id="footer">
@@ -169,7 +99,7 @@
             <a class="logoContainer" href="../index.php"><img class="logo" src="../Media/logo.png"></a>
         </div>
     </div>
-
+    
     <script src="../JS/lateralSelection.js"></script>
 </body>
 </html>

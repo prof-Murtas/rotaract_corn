@@ -1,17 +1,20 @@
 <?php
     require "../PHP/constants.php";
 
+    $error = "";
     session_start();
     if (isset($_SESSION[$IS_LOGGED])){
         if ($_SESSION[$IS_LOGGED]){
             header("Location: ../admin.php");
+            exit;
         } else {
-            echo "Fallito. Mi riferisco a te, non al login";
+            $error = "Password Errata! Riprovare";
+            unset($_SESSION[$IS_LOGGED]);
         }
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $json = json_decode(file_get_contents("../$CONFIG_FILE"),true);
+        $json = json_decode(file_get_contents("../$PASSWORD_FILE"),true);
 
         $inputPassword = $_POST[$PASSWORD];
 
@@ -37,30 +40,21 @@
 <body>
     <div id="loginContainer">
         <h1>È NECESSARIA L'AUTORIZZAZIONE</h1>
-        <form action="login.php" method="post">
+        <form action="" method="post">
             <div>
                 <label for="passwordInput">Password</label><br>
                 <input type="password" name="password" id="passwordInput" required>
-                <p onclick="togglePasswordVisibility()">Mostra password</p>
+                <p onclick="togglePasswordVisibility('passwordInput')">Mostra password</p>
             </div>
             <br>
             <button id="loginBtn" type="submit">Accedi</button>
         </form>
 
-        MANCA L'ERRORE A PASSWORD SBAGLIATA!!!
+        <p id="error"><?php echo $error;?></p>
 
-        <a href="../index.html"><button id="homeBtn">Torna alla Home</button></a> 
+        <a href="../index.php"><button id="homeBtn">Torna alla Home</button></a> 
     </div>
 
-    <script>
-        function togglePasswordVisibility() {
-            var x = document.getElementById("passwordInput");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
+    <script src="../JS/passwordManagement.js"></script>
 </body>
 </html>

@@ -1,84 +1,168 @@
 {
-    "presidents": [
-        "Alessandro Condini",
-        "Alessandro Condini",
-        "Annarosa Molinari",
-        "Paola Matassoni",
-        "Giorgio Bertoldi",
-        "Giorgio Bertoldi",
-        "Edoardo De Abbondi",
-        "Vittorio Dusini",
-        "Claudia Eccher",
-        "Marco Franzinelli",
-        "Claudia Eccher",
-        "Giovanna Orlando",
-        "Sonia Petteni",
-        "Vittorio Cristanelli",
-        "Riccardo Sampaolesi",
-        "Alessia De Abbondi",
-        "Lavinia Sartori",
-        "Francesca Jerace",
-        "Guglielmo Reina",
-        "Maria Emanuela De Abbondi",
-        "Sara Filippi",
-        "Fabiola Jezza",
-        "Alessandro Pallaoro",
-        "Claire Albano",
-        "Arianna Bertagnolli",
-        "Thomas Zobele",
-        "Andrea Codroico",
-        "Stefano Lorenzini",
-        "Biagio Andrea Algieri",
-        "Davide H. Ciminelli",
-        "Oscar Pallaoro",
-        "Costance Giovannini",
-        "Annalisa De Pretis",
-        "Elisabetta Toller",
-        "Federica Berlanda",
-        "Jessica De Ponto",
-        "Elisabetta Tomasi",
-        "Lucia del Torre",
-        "Daniele Di Lucrezia"
+    "exPresidents": [
+        {
+            "name": "Alessandro Condini",
+            "date": "(1985-1986)"
+        },
+        {
+            "name": "Alessandro Condini",
+            "date": "(1986-1987)"
+        },
+        {
+            "name": "Annarosa Molinari",
+            "date": "(1987-1988)"
+        },
+        {
+            "name": "Paola Matassoni",
+            "date": "(1988-1989)"
+        },
+        {
+            "name": "Giorgio Bertoldi",
+            "date": "(1989-1990)"
+        },
+        {
+            "name": "Giorgio Bertoldi",
+            "date": "(1990-1991)"
+        },
+        {
+            "name": "Edoardo De Abbondi",
+            "date": "(1991-1992)"
+        },
+        {
+            "name": "Vittorio Dusini",
+            "date": "(1992-1993)"
+        },
+        {
+            "name": "Claudia Eccher",
+            "date": "(1993-1994)"
+        },
+        {
+            "name": "Marco Franzinelli",
+            "date": "(1994-1995)"
+        },
+        {
+            "name": "Claudia Eccher",
+            "date": "(1995-1996)"
+        },
+        {
+            "name": "Giovanna Orlando",
+            "date": "(1996-1997)"
+        },
+        {
+            "name": "Sonia Petteni",
+            "date": "(1997-1998)"
+        },
+        {
+            "name": "Vittorio Cristanelli",
+            "date": "(1998-1999)"
+        },
+        {
+            "name": "Riccardo Sampaolesi",
+            "date": "(1999-2000)"
+        },
+        {
+            "name": "Alessia De Abbondi",
+            "date": "(2000-2001)"
+        },
+        {
+            "name": "Lavinia Sartori",
+            "date": "(2001-2002)"
+        },
+        {
+            "name": "Francesca Jerace",
+            "date": "(2002-2003)"
+        },
+        {
+            "name": "Guglielmo Reina",
+            "date": "(2003-2004)"
+        },
+        {
+            "name": "Maria Emanuela De Abbondi",
+            "date": "(2004-2005)"
+        },
+        {
+            "name": "Sara Filippi",
+            "date": "(2005-2006)"
+        },
+        {
+            "name": "Fabiola Jezza",
+            "date": "(2006-2007)"
+        },
+        {
+            "name": "Alessandro Pallaoro",
+            "date": "(2007-2008)"
+        },
+        {
+            "name": "Claire Albano",
+            "date": "(2008-2009)"
+        },
+        {
+            "name": "Arianna Bertagnolli",
+            "date": "(2009-2010)"
+        },
+        {
+            "name": "Thomas Zobele",
+            "date": "(2010-2011)"
+        },
+        {
+            "name": "Andrea Codroico",
+            "date": "(2011-2012)"
+        },
+        {
+            "name": "Stefano Lorenzini",
+            "date": "(2012-2013)"
+        },
+        {
+            "name": "Biagio Andrea Algieri",
+            "date": "(2014-2015)"
+        },
+        {
+            "name": "Davide H. Ciminelli",
+            "date": "(2015-2016)"
+        },
+        {
+            "name": "Oscar Pallaoro",
+            "date": "(2016-2017)"
+        },
+        {
+            "name": "Costance Giovannini",
+            "date": "(2017-2018)"
+        },
+        {
+            "name": "Annalisa De Pretis",
+            "date": "(2018-2019)"
+        },
+        {
+            "name": "Elisabetta Toller",
+            "date": "(2019-2020)"
+        },
+        {
+            "name": "Federica Berlanda",
+            "date": "(2020-2021)"
+        },
+        {
+            "name": "Jessica De Ponto",
+            "date": "(2021-2022)"
+        },
+        {
+            "name": "Elisabetta Tomasi",
+            "date": "(2022-2023)"
+        },
+        {
+            "name": "Lucia del Torre",
+            "date": "(2023-2024)"
+        },
+        {
+            "name": "Daniele Di Lucrezia",
+            "date": "(2024-2025)"
+        }
     ],
-    "presidentDates": [
-        "(1985-1986)",
-        "(1986-1987)",
-        "(1987-1988)",
-        "(1988-1989)",
-        "(1989-1990)",
-        "(1990-1991)",
-        "(1991-1992)",
-        "(1992-1993)",
-        "(1993-1994)",
-        "(1994-1995)",
-        "(1995-1996)",
-        "(1996-1997)",
-        "(1997-1998)",
-        "(1998-1999)",
-        "(1999-2000)",
-        "(2000-2001)",
-        "(2001-2002)",
-        "(2002-2003)",
-        "(2003-2004)",
-        "(2004-2005)",
-        "(2005-2006)",
-        "(2006-2007)",
-        "(2007-2008)",
-        "(2008-2009)",
-        "(2009-2010)",
-        "(2010-2011)",
-        "(2011-2012)",
-        "(2012-2013)",
-        "(2014-2015)",
-        "(2015-2016)",
-        "(2016-2017)",
-        "(2017-2018)",
-        "(2018-2019)",
-        "(2019-2020)",
-        "(2020-2021)",
-        "(2021-2022)",
-        "(2022-2023)",
-        "(2023-2024)",
-        "(2024-2025)"
-    ]
+    "directors": {
+        "pres": "Matteo Bell\u00e8",
+        "vpres": "Diletta Betti",
+        "segr": "Elisabetta Tomasi",
+        "tes": "Matteo Manara",
+        "pref": "Alessandra Cassaro",
+        "expres": "Daniele Di Lucrezia"
+    }
 }

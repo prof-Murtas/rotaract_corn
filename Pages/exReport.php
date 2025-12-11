@@ -1,17 +1,29 @@
 <?php
-$folders = '../Media/PDF/';
-$elements = scandir($folders);
-$elementsPdf = array_diff($elements, array('.', '..'));
+    require "../PHP/constants.php";
+    require "../PHP/functions.php";
 
-$newArray = array();
-foreach ($elementsPdf as $pdf) {
-    $newArray[] = $pdf;
-}
-$elementsPdf = $newArray;
+    $folders = '../Media/PDF/';
+    $elements = scandir($folders);
 
-$numPdf = count($elementsPdf);
+    $elementsPdf = filterPdf($elements);
 
+    $numPdf = count($elementsPdf);
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        if (isset($_POST["lang"])){
+            setLanguage($_POST["lang"]);
+        }
+        header("Refresh:0");
+        exit;
+    }
 
+    session_set_cookie_params(0); //distruggi la sessione all'uscita dal browser
+    session_start();
+    loadJsonInSession("../");
+
+    $textFile = setLanguage();
+    $texts = json_decode($_SESSION[$TXT_JSON][$textFile], true);
+    $langImg = "../" . getLanguageImage($textFile);
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +31,9 @@ $numPdf = count($elementsPdf);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
+    <title><?php echo $texts[$TXT_EX_TITLE]; ?></title>
     <link rel="stylesheet" href="../CSS/commonStyle.css">
-    <link rel="stylesheet" href="../CSS/whoWeAreStyle.css">
+    <link rel="stylesheet" href="../CSS/exReportStyle.css">
 </head>
 <body>
     <div id="obscurer"></div>
@@ -30,29 +42,43 @@ $numPdf = count($elementsPdf);
         <button id="exitBtn" onclick="hideLateralSelection()">X</button>
 
         <div id="lateralBtns">
-            <a href="../index.html"><button>Home</button></a>
-            <a href="whoWeAre.php"><button>Chi siamo</button></a>
-            <a href="service.html"><button>Service</button></a>
-            <a href="calendar.html"><button>Eventi</button></a>
-            <a href="collaborations.html"><button>Collaborazioni</button></a>
-            <a href="contacts.php"><button>Contatti</button></a> 
+            <a href="../index.php"><button><?php echo $texts[$TXT_HOME]; ?></button></a>
+            <a href="whoWeAre.php"><button><?php echo $texts[$TXT_WHO_WE_ARE]; ?></button></a>
+            <a href="service.php"><button><?php echo $texts[$TXT_SERVICE]; ?></button></a>
+            <a href="calendar.php"><button><?php echo $texts[$TXT_EVENTS]; ?></button></a>
+            <a href="collaborations.php"><button><?php echo $texts[$TXT_COLLAB]; ?></button></a>
+            <a href="contacts.php"><button><?php echo $texts[$TXT_CONTACTS]; ?></button></a> 
         </div>
     </div>
     
 
     <div id="header">
-        <a class="logoContainer" href="../index.html"><img class="logo" src="../Media/logo.png"></a>
+        <a class="logoContainer" href="../index.php">
+            <img class="logo" src="../Media/logo.png">
+        </a>
 
-        <div id="buttons">
-            <a href="../index.html"><button>Home</button></a>
-            <a href="whoWeAre.php"><button>Chi siamo</button></a>
-            <a href="service.html"><button>Service</button></a>
-            <a href="calendar.html"><button>Eventi</button></a>
-            <a href="collaborations.html"><button>Collaborazioni</button></a>
-            <a href="contacts.php"><button>Contatti</button></a> 
+        <div class="dropdownBox">
+            <div class="hoverDropdownBox">
+                <img id="langImg" class="dropdownImg" src="<?php echo $langImg;?>">
+                <div class="dropdownContent">
+                    <form action="" method="POST">
+                        <input type="submit" name="lang" value="<?php echo $ITALIAN;?>" class="btn"></input>
+                        <input type="submit" name="lang" value="<?php echo $ENGLISH;?>" class="btn"></input>
+                        <input type="submit" name="lang" value="<?php echo $GERMAN;?>" class="btn"></input>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <!--Menù a linee responsive-->
+        <div id="buttons">
+            <a href="../index.php"><button><?php echo $texts[$TXT_HOME]; ?></button></a>
+            <a href="whoWeAre.php"><button><?php echo $texts[$TXT_WHO_WE_ARE]; ?></button></a>
+            <a href="service.php"><button><?php echo $texts[$TXT_SERVICE]; ?></button></a>
+            <a href="calendar.php"><button><?php echo $texts[$TXT_EVENTS]; ?></button></a>
+            <a href="collaborations.php"><button><?php echo $texts[$TXT_COLLAB]; ?></button></a>
+            <a href="contacts.php"><button><?php echo $texts[$TXT_CONTACTS]; ?></button></a>
+        </div>
+
         <div id="menuHamburger" onclick="showLateralSelection()">
             <div class="line"></div>
             <div class="line"></div>
@@ -62,57 +88,40 @@ $numPdf = count($elementsPdf);
 
     <div id="content">
         <br>
-        <h1>Vecchi bollettini</h1>
+        <h1 class="mainTitle"><?php echo $texts[$TXT_OLD_BULLETINS]; ?></h1>
         <?php
         if ($numPdf > 0) {
             for($i=0; $i<$numPdf; $i++)
             {
                 ?>
-                <div>
-                <?php
-                for($j=0; $j<4; $j++){
-                    $i++;
-
-                    ?>
-                    <form action="<?php echo "../Media/PDF/" . $elementsPdf[$i-1];?>" method="get">
-                        <button>Vecchi bollettini</button>
-                    </form>
-                    
-                    <?php
-                    if($numPdf==$i){
-                        $j=4;
-                    }
-
-                }
-                ?>
-                </div>
+                <a class="reportButtons" href="<?php echo "../$PDF_BULLETIN_FOLDER/" . $elementsPdf[$i];?>" target="_blank"><?php echo $elementsPdf[$i]?></a>
                 <?php
             }
             
         } else {
-            echo '<p>Nessun bollettino disponibile.</p>';
+            echo '<p>' . $texts[$TXT_NO_BULLETINS] . '</p>'; 
         }?>
     </div>
 
     <div id="footer">
         <div id="footerContent">
             <div id="registeredOffice">
-                <h4>Sede legale:</h4>
-                <p>Piazza Dante 20, 38122 Trento (TN)</p>
+                <h4><?php echo $texts[$TXT_LEGAL_RES]; ?></h4>
+                <p><?php echo $texts[$TXT_ADDRESS]; ?></p>
             </div>
 
             <div id="externalWebsites">
                 <div>
-                    <h4>Distretto 2060</h4>
+                    <h4><?php echo $texts[$TXT_DISTRICT]; ?></h4>
                     <p><a href="https://www.rotaract2060.it/">https://www.rotaract2060.it/</a></p>
                 </div>
 
                 <div>
-                    <h4>Rotary Trento</h4>
+                    <h4><?php echo $texts[$TXT_ROTARY_TRENTO]; ?></h4>
                     <p><a href="https://trento.rotary2060.org/">https://trento.rotary2060.org/</a></p>
                 </div>
             </div>
-            <a class="logoContainer" href="../index.html"><img class="logo" src="../Media/logo.png"></a>
+            <a class="logoContainer" href="../index.php"><img class="logo" src="../Media/logo.png"></a>
         </div>
     </div>
 

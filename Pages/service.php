@@ -18,24 +18,25 @@
     $texts = json_decode($_SESSION[$TXT_JSON][$textFile], true);
     $langImg = "../" . getLanguageImage($textFile);
 
-    $jsonContent = json_decode($_SESSION[$PRESIDENTS_JSON],true);
-    $exPresidents = $jsonContent[$EX_PRESIDENTS];
-    $lenght = count($exPresidents);
-
-    $directors = $jsonContent[$DIRECTORS];
+    $configJson = json_decode($_SESSION[$CONFIG_JSON], true);
+    $selectedBulletin = "../Media/" . $configJson[$CURRENT_BULLETIN];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $texts[$TXT_WHO_WE_ARE]; ?></title>
+    <title><?php echo $texts[$TXT_SERVICE]; ?></title>
+
     <link rel="stylesheet" href="../CSS/commonStyle.css">
-    <link rel="stylesheet" href="../CSS/whoWeAreStyle.css">
+    <link rel="stylesheet" href="../CSS/serviceStyle.css">
 </head>
+
 <body>
     <div id="obscurer"></div>
-    
+
     <div id="lateralSelection">
         <button id="exitBtn" onclick="hideLateralSelection()">X</button>
 
@@ -45,13 +46,15 @@
             <a href="service.php"><button><?php echo $texts[$TXT_SERVICE]; ?></button></a>
             <a href="calendar.php"><button><?php echo $texts[$TXT_EVENTS]; ?></button></a>
             <a href="collaborations.php"><button><?php echo $texts[$TXT_COLLAB]; ?></button></a>
-            <a href="contacts.php"><button><?php echo $texts[$TXT_CONTACTS]; ?></button></a> 
+            <a href="contacts.php"><button><?php echo $texts[$TXT_CONTACTS]; ?></button></a>
         </div>
     </div>
-    
 
+    
     <div id="header">
-        <a class="logoContainer" href="../index.php"><img class="logo" src="../Media/logo.png"></a>
+        <a class="logoContainer" href="../index.php">
+            <img class="logo" src="../Media/logo.png">
+        </a>
 
         <div class="dropdownBox">
             <div class="hoverDropdownBox">
@@ -72,7 +75,7 @@
             <a href="service.php"><button><?php echo $texts[$TXT_SERVICE]; ?></button></a>
             <a href="calendar.php"><button><?php echo $texts[$TXT_EVENTS]; ?></button></a>
             <a href="collaborations.php"><button><?php echo $texts[$TXT_COLLAB]; ?></button></a>
-            <a href="contacts.php"><button><?php echo $texts[$TXT_CONTACTS]; ?></button></a> 
+            <a href="contacts.php"><button><?php echo $texts[$TXT_CONTACTS]; ?></button></a>
         </div>
 
         <div id="menuHamburger" onclick="showLateralSelection()">
@@ -82,74 +85,64 @@
         </div>
     </div>
 
+
     <div id="content">
-        <h1 class="mainTitle"><?php echo $texts[$TXT_WHO_WE_ARE]; ?></h1>
-        <div class="contDiv">
-            <h2 class="subtitle"><?php echo $texts[$TXT_ACTUAL]; ?></h2>
-            <div class="container">
-                <div class="leftRow">
-                    <p><span class="role"><?php echo $texts[$TXT_PRES]; ?></span><span><?php echo $directors["pres"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_VPRES]; ?></span><span><?php echo $directors["vpres"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_SEGR]; ?></span><span><?php echo $directors["segr"];  ?></span></p>
+
+        <h1><?php echo $texts[$TXT_SERVICE]; ?></h1>
+        <div id="textContainer">
+
+            <div id="servicesList">
+                <div class="serviceItem">
+                    <p><?php echo $texts[$TXT_SERVICE_DESC]; ?></p>
+                    <p><?php echo $texts[$TXT_FIVE_WAYS]; ?></p>
                 </div>
-                    
-                <div>
-                    <p><span class="role"><?php echo $texts[$TXT_TES]; ?></span><span><?php echo $directors["tes"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_PREF]; ?></span><span ><?php echo $directors["pref"];  ?></span></p>
-                    <p><span class="role"><?php echo $texts[$TXT_EXPRES]; ?></span><span><?php echo $directors["expres"];  ?></span></p>
+                <div class="serviceItem">
+                    <h2><?php echo $texts[$TXT_WAY1]; ?></h2>
+                    <p><?php echo $texts[$TXT_WAY1_DESC]; ?></p>
                 </div>
-            </div>
+
+                <div class="serviceItem">
+                    <h2><?php echo $texts[$TXT_WAY2]; ?></h2>
+                    <p><?php echo $texts[$TXT_WAY2_DESC]; ?></p>
+                </div>
+
+                <div class="serviceItem">
+                    <h2><?php echo $texts[$TXT_WAY3]; ?></h2>
+                    <p><?php echo $texts[$TXT_WAY3_DESC]; ?></p>
+                </div>
+
+                <div class="serviceItem">
+                    <h2><?php echo $texts[$TXT_WAY4]; ?></h2>
+                    <p><?php echo $texts[$TXT_WAY4_DESC]; ?></p>
+                </div>
+
+                <div class="serviceItem">
+                    <h2><?php echo $texts[$TXT_WAY5]; ?></h2>
+                    <p><?php echo $texts[$TXT_WAY5_DESC]; ?></p>
+                </div>
+
+            </div> 
         </div>
-        
-        <br>
 
-        <div class="contDiv">
-            <h2 class="subtitle"><?php echo $texts[$TXT_EXPRESS]; ?></h2>
-            <div>
-            <?php
-                for($i=$lenght-1; $i>=0;){
-                    ?>
-                    <div class="container2">
-                    <?php
-                    $j=0;
-                    while( $j<4 && $i>=0 ){
-                        ?>
-                        <div class="presidentContent">
-                                <h3><?php
-                                echo $exPresidents[$i][$PRESIDENT_NAME];
-                            
-                                ?></h3>
-                                <p class="date"><?php
-                                echo $exPresidents[$i][$PRESIDENT_DATE];
-                                ?></p>
-                            
-                        </div>
-                        <?php
-                        $i--;
-                        $j++;
-                    };
-
-                    ?>
-                </div>
-                <br>
+        <div id="pdf">
+            <h1><?php echo $texts[$TXT_PDF_TEXT]; ?></h1>
+            <?php if (is_file($selectedBulletin)){
+                ?>
+                    <iframe src="<?php echo $selectedBulletin;?>" width="100%" height="600px"></iframe>
                 <?php
-
-                
-            }
-
-
-
+                }
             ?>
-
-            </div>
-            
-            
-            
-        </div>   
-    </div>
+            <form action="exReport.php" method="get">
+                <button id="btnReports"><?php echo $texts[$TXT_VIEW_ALL_BULLETINS]; ?></button>
+            </form>
+        </div>
+        <br>
+        <br>
+    </div> 
 
     <div id="footer">
         <div id="footerContent">
+
             <div id="registeredOffice">
                 <h4><?php echo $texts[$TXT_LEGAL_RES]; ?></h4>
                 <p><?php echo $texts[$TXT_ADDRESS]; ?></p>
@@ -166,10 +159,15 @@
                     <p><a href="https://trento.rotary2060.org/">https://trento.rotary2060.org/</a></p>
                 </div>
             </div>
-            <a class="logoContainer" href="../index.php"><img class="logo" src="../Media/logo.png"></a>
+
+            <a class="logoContainer" href="../index.php">
+                <img class="logo" src="../Media/logo.png">
+            </a>
+
         </div>
     </div>
 
     <script src="../JS/lateralSelection.js"></script>
 </body>
+
 </html>

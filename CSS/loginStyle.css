@@ -80,6 +80,11 @@ button{
     cursor: pointer;
 }
 
+#error{
+    font-weight: 900;
+    color: red;
+}
+
 #passwordInput::value{
     color: black;
 }
